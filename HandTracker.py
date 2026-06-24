@@ -25,7 +25,7 @@ class HandTracker:
         return img
 
 
-    def find_postion(self, img, handID = 0):
+    def find_position(self, img, handID = 0):
         positions = []
         if self.result.multi_hand_landmarks:
             target_hand = self.result.multi_hand_landmarks[handID]

@@ -1,17 +1,18 @@
 import cv2 as cv
-import HandTracker
+import HandTracker as ht
+import PositionDetector as pd
 
 
 capture = cv.VideoCapture(0)
-handTracker = HandTracker.HandTracker()
+hand_tracker = ht.HandTracker()
 
 while True:
     success, img = capture.read()
     img = cv.flip(img,1)
-    img = handTracker.detect(img)
-    positions = handTracker.find_postion(img)
-    if len(positions) > 0:
-        print (positions[8])
+    img = hand_tracker.detect(img)
+    positions = hand_tracker.find_position(img)
+    position_detector = pd.PositionDetector(hand_tracker, img)
+    print (position_detector.hand_position())
     cv.imshow("Camera", img)
     cv.waitKey(1)
 
