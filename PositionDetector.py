@@ -20,13 +20,13 @@ class PositionDetector:
         return fingers
 
     def hand_position(self):
-        result = 'i'
+        result = 0
         fingers = self.finger_positions()
         if len(fingers) > 0:
             if fingers[0] and fingers[1] and fingers[2] and fingers[3]:
-                result = 'p'
+                result = 2
             elif fingers[0] and fingers[1] and not(fingers[2]) and not(fingers[3]):
-                result = 's'
+                result = 3
             elif not(fingers[0]) and not(fingers[1]) and not(fingers[2]) and not(fingers[3]):
-                result = 'r'
+                result = 1
         return result
